@@ -1,65 +1,60 @@
+# SRIDNet - Super Resolution Image Denoiser Network 🌠
+
+Welcome to **SRIDNet**, a lightweight yet powerful Convolutional Neural Network (CNN) model for **image denoising** that merges **super-resolution** and **denoising** techniques into a single architecture. Optimized for real-life applications, SRIDNet achieves impressive image clarity with a fraction of the computational load demanded by state-of-the-art models. 
+
+## 🚀 Key Features
+
+- **Dual-Stage Architecture**: Combines **Super Resolution** and **Autoencoder-based Denoising Blocks** to upscale and refine noisy images.
+- **Compact Model**: With only ~460,000 trainable parameters, SRIDNet is remarkably smaller than conventional models, making it ideal for environments with constrained computational resources.
+- **High Efficiency**: Delivers near state-of-the-art performance with minimal inference time.
+- **Dataset Tested**: Trained and evaluated on **SIDD** and **Urban100** datasets, ensuring robustness across diverse, real-world noise levels.
+
+## 🔍 Performance Highlights
+
+- **Urban100 Dataset**:
+
+  <img src="./urban100_15_patches_result.png"/>
+
+  - Achieved **PSNR** (Peak Signal-to-Noise Ratio) averages of:
+    - **34 dB** for σ=15
+    - **32 dB** for σ=25
+    - **28 dB** for σ=50
+
+- **SIDD Dataset**:
+
+  <img src="./sidd_patch1.png" />
+
+  - Reached a remarkable **39.5 dB** average PSNR.
+- **Inference Speed**:
+  - Average inference time for a **256x256 image** is **0.0208 seconds** — substantially faster than most models in the field.
+
+## ⚙️ Model Structure
+
+SRIDNet comprises two primary blocks:
+
+1. **Super Resolution Block**: Enhances image resolution by reconstructing high-frequency details lost in noisy images.
+
+<img src="./Super Resolution.drawio.png" />
+
+2. **Denoiser Block**: Utilizes a compact Autoencoder structure, eliminating noise effectively while maintaining fine details.
+
+<img src="./Image Denoiser.drawio.png" />
+
+## 📊 Why SRIDNet?
+
+SRIDNet strikes an ideal balance between **efficiency** and **effectiveness**, making it highly suitable for practical applications, especially where **computational resources are limited**. Its compact size and fast inference time open doors to real-time denoising tasks in resource-constrained environments, making SRIDNet a versatile tool for industries ranging from medical imaging to low-light photography.
+
+<img src="./sidd_test_time.png" />
+
+## 📁 Dataset
+
+The model was trained on the **SIDD (Smartphone Image Denoising Dataset)** and **Urban100** datasets, with images resized and augmented to simulate real-world noise.
+
+
+## 📄 License
+
+This project is licensed under the Apache 2.0 License. 
 
 ---
 
-# 🧠 Denoising of MRI Images using CNN
-
-**A CNN-based Approach to Denoise MRI Scans**
-
-## 🚀 Overview
-
-This project presents a convolutional neural network (CNN) architecture for the blind denoising of brain MRI images. The model leverages two key blocks: a **SuperResolution** module to upscale images and a **Denoiser** to enhance image quality while restoring the original dimensions. By combining these techniques, the model achieves superior performance in terms of image quality compared to traditional autoencoder-based methods.
-
-## 🛠️ How It Works
-
-1. **Input**: Original MRI image size is **(112, 112, 3)**.
-2. **SuperResolution Block**: Upscales the input image to **(224, 224, 3)**.
-3. **Denoiser Block**: Denoises the upscaled image while downscaling it back to the original dimensions **(112, 112, 3)**.
-4. **Output**: The final image is cleaner and free from noise, significantly improving MRI quality.
-
-**Super-Resolution Block**
-
-<img src="super-resolution.PNG"/>
-
-**Denoiser Block**
-
-<img src="denoiser.PNG" />
-
-This combination of upscaling and downscaling not only denoises but also retains critical features in the brain MRI scans.
-
-## 📊 Comparisons & Results
-
-The model was trained on **5,712 MRI images** and tested on two separate test sets of **3,762** and **1,311 images**, respectively.
-
-- **Proposed Model (denoiser_enhancer)**:
-  - **PSNR**: 31.5 (Test Set 1), 36.0 (Test Set 2)
-  - **Model Size**: 3,674 KB
-
-- **Autoencoder Model (denoiser)**:
-  - **PSNR**: 28.5 (Test Set 1), 33.3 (Test Set 2)
-  - **Model Size**: 2,299 KB
-
-  <img src="comparison.png" />
-
-  <br/>
-
-  **Denoising of Giloma Images**
-
-  <img src="results1.png" />
-
-  <br/>
-
-  **Denoising of Brain Tumor Images**
-  
-  <img src="results2.png" />
-
-Despite a slightly larger model size, the proposed CNN significantly outperforms the autoencoder, offering a **+3 PSNR improvement** on both datasets while keeping the model lightweight.
-
-## 🛠️ Technologies Used
-
-- **TensorFlow** and **Keras** for model building and training.
-- **Sci-Kit Learn** and **OpenCV** for data preprocessing and augmentation.
-
-## 📈 Performance Metrics
-
-- **PSNR (Peak Signal-to-Noise Ratio)** is used as the primary metric for image quality assessment.
-- The model demonstrates a considerable leap in PSNR, indicating clearer and more accurate MRI images post-denoising.
+SRIDNet is here to make high-quality image denoising accessible and efficient. If you found this project useful, consider giving it a ⭐ on GitHub! Enjoy your journey in noise-free imaging with SRIDNet! 🎉
